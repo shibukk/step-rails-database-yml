@@ -152,8 +152,8 @@ generate_mysql_docker() {
   info "Generating mysql docker template"
   tee "$location" << EOF
 test:
-    adapter: mysql2
-    encoding: utf8
+    adapter: <%= ENV['MYSQL_ENV_MYSQL_ADAPTER'] || 'mysql2' %>
+    encoding: <%= ENV['MYSQL_ENV_MYSQL_ENCODING'] || 'utf8' %>
     database: <%= ENV['MYSQL_ENV_MYSQL_DATABASE'] %><%= ENV['TEST_ENV_NUMBER'] %>
     username: <%= ENV['MYSQL_ENV_MYSQL_USER'] %>
     password: <%= ENV['MYSQL_ENV_MYSQL_PASSWORD'] %>
